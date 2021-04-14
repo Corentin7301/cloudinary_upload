@@ -2,10 +2,10 @@
 // const fetch = require('node-fetch');
 
 // Cloudinary url
-const CLOUDINARY_URL = process.env.CLOUDINARY_URL
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/corentin7301/upload/'
 
 // In settings/Upload presets/Unsigned uploading enabled
-const CLOUDINARY_UPLOAD_PRESET = process.env.CLOUDINARY_UPLOAD_PRESET
+const CLOUDINARY_UPLOAD_PRESET = 'zgxmpxyu'
 
 let images = [
     // "https://cdn.futura-sciences.com/buildsv6/images/wide1920/8/5/8/858743bb35_50169458_chien-min.jpg"
