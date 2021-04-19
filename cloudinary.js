@@ -1,51 +1,35 @@
-// const axios = require('axios').default;
-// const fetch = require('node-fetch');
+const fetch = require('node-fetch');
+const dotenv = require('dotenv');
+dotenv.config();
 
-// Cloudinary url
-const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/corentin7301/upload/'
 
 // In settings/Upload presets/Unsigned uploading enabled
-const CLOUDINARY_UPLOAD_PRESET = 'zgxmpxyu'
+
 
 let images = [
-    // "https://cdn.futura-sciences.com/buildsv6/images/wide1920/8/5/8/858743bb35_50169458_chien-min.jpg"
-    // "https://res.cloudinary.com/corentin7301/image/upload/f_auto,q_auto/v1/corentinperroux.fr/accueil/L_arcalod_j8dzsm.jpg",
-    // "https://res.cloudinary.com/corentin7301/image/upload/f_auto,q_auto/v1/corentinperroux.fr/accueil/Subaru_sti2_r1icle.jpg",
-    // "https://res.cloudinary.com/corentin7301/image/upload/f_auto,q_auto/v1/corentinperroux.fr/accueil/Rapha%C3%ABl5_ucxjtj.jpg",
-    // "https://res.cloudinary.com/corentin7301/image/upload/f_auto,q_auto/v1/corentinperroux.fr/accueil/Tristan2_zys0j6.jpg"
-]
-
-images.forEach(image => {
-
-    let formData = new FormData()
-    formData.append('file', image)
-    formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-    
-    axios({
-        url: CLOUDINARY_URL,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        data: formData
-    }).then(function (res) {
-        console.log('URL :', res.data.secure_url);
-    }).catch(function (err) {
-        console.error(err)
-    })
-});
+    "https://cdn.futura-sciences.com/buildsv6/images/wide1920/8/5/8/858743bb35_50169458_chien-min.jpg",
+    "https://images.pexels.com/photos/3854478/pexels-photo-3854478.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/6624612/pexels-photo-6624612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/7473017/pexels-photo-7473017.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500","https://images.pexels.com/photos/6399488/pexels-photo-6399488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+];
 
 
-// FETCH
+async function superFetch() {
 
-// fetch('https://api.cloudinary.com/v1_1/corentin7301/upload/', {
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/x-www-form-urlencoded'
-//     },
-//     body: file
-// }).then(function (res) {
-//     console.log(res);
-// }).catch(function (err) {
-//     console.error(err)
-// })
+    for await (const image of images) {
+
+        let datas = {
+            file: image,
+            upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET
+        }
+
+        const response = await fetch(process.env.CLOUDINARY_URL, {
+            method: 'POST',
+            body: JSON.stringify(datas),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const cleanResponse = await response.json()
+        console.log(cleanResponse.secure_url);
+        }
+}
+superFetch()
