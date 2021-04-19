@@ -1,0 +1,22 @@
+{
+  "name": "cloudinary_upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cloudinary.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Corentin7301/cloudinary_upload.git"
+  },
+  "author": "Corentin PERROUX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Corentin7301/cloudinary_upload/issues"
+  },
+  "homepage": "https://github.com/Corentin7301/cloudinary_upload#readme"
+}
