@@ -16,7 +16,7 @@ In the script, add file links in the "images" array, saparated with ",".
 
 ## Run script
 
-Run script with ```node cloudinary.js```.
+Run script with ```node cloudinary.js``` in your terminal.
 
 
 
